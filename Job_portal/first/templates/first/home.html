@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>CJC</title>
+  </head>
+  <body>
+    {% if user.is_authenticated %}
+    <header class="navbar navbar-expand-lg navbar-light " style="background-color:#c4d19b" >
+
+
+  Hi {{ user.username }}
+  <a align="right" class="btn btn-link btn-sm" href="/logout/">Log out</a></header>
+  {% endif%} <br><br><br><br> {% block body_block %}
+    <div class="container-lg">
+    <div class="jumbotron">
+  <h1 class="display-4" align="center">Welcome To Job Portal</h1>
+  <div align="center" class="" style=" margin: auto; width: 50%; padding: 10px;">
+  <a class="btn btn-primary btn-lg" href="/reg/" role="button">SingUP</a>
+  <a class="btn btn-primary btn-lg" href="/login/" role="button">Login</a>
+    </div>
+    </div>
+    </div>
+    {% endblock %}
+  </body>
+</html>

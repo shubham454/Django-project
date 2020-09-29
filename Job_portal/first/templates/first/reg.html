@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+
+{%extends "first/home.html" %}
+  <body>
+ {% block body_block %}
+    <form class="" action="/reg/" method="post">
+      {% csrf_token %}
+      <table>
+      {{form.as_table}}
+      </table>
+      <button type="submit" name="button">save</button>
+    </form>
+    {% endblock %}
+  </body>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+{%extends "first/home.html" %}
+  <body>
+ {% block body_block %}
+    {% if job %}
+
+    <table class="table table-bordered table-sm" style="margin-left:50px;margin-right:50px;">
+      <thead>
+        <th>Title</th>
+        <th>Stream</th>
+        <th>Description</th>
+        <th>Required Experence</th>
+        <th>End Date</th>
+      </thead>
+      {%for j in job%}
+      <tr>
+        <td>{{j.title}}</td>
+        <td>{{j.stream}}</td>
+        <td>{{j.desc}}</td>
+        <td>{{j.experience}}</td>
+          <td>{{j.date}}</td>
+        <td>{{j.date_end}}</td>
+        {%if isSeeker%}
+        <td>{% if j in applied %}
+          <button class="btn btn-success btn-sm" >applied for job</button>
+          {% else %}
+          <a class="btn btn-primary btn-sm" href="/jobapply/{{j.id}}">Apply</a>
+          {% endif %}
+        </td>
+        {% endif %}
+        {%if isProvider %}
+        <td> <a href="/showseeker/{{j.id}}">show Applicant</a> </td>
+        {%endif%}
+
+
+      </tr>{%endfor%}
+    </table>
+    {% endif %}
+
+{%if isProvider%}
+    <a href="/addjob/">addjob</a>
+{% endif %}
+
+    {% endblock %}
+  </body>
