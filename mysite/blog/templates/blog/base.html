@@ -1,0 +1,40 @@
+{% load blog_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/blog1.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!--    <style>-->
+<!--        body{-->
+<!--text-align: center;-->
+<!--background: powderblue;-->
+<!--}-->
+<!--    </style>-->
+</head>
+<body>
+    <div id="content">
+        <hr>
+        {% block content %}
+        {% endblock %}
+        <hr>
+    </div>
+    <div id="sidebar">
+        <h2>My blog</h2>
+        <p>This is my blog. I've written {% total_posts %} posts so far.</p>
+        <h3>Latest posts</h3>
+        {% show_latest_posts 3 %}
+    </div>
+<h3>Most Commented posts</h3>
+{% get_most_commented_posts as most_commented_posts %}
+<ul>
+    {% for post in most_commented_posts %}
+    <li>
+        <a href="{{post.get_absolute_url}}">{{post.title}}</a>
+    </li>
+</ul>
+</body>
+</html>

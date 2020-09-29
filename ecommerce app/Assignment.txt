@@ -1,0 +1,43 @@
+Statement :- You have to create simple e-commerce using DRF (Django Rest Framework) having functionality as follows:
+
+
+1) Register Customer & Vendor through API (impliment token based Authentication) 
+2) Login Customer & Vendor using API  (you will get token inside response)
+3) Place order using user auth token 
+4) Login vendor by API
+5) Accept Order by vendor 
+
+You can use DB structure as follow.
+1) Create five Class (tables) UserRole, User, Product, Order, OrderItem
+
+2) UserRole will have fields as follows:-
+   i) title (Customer & Vendor)
+   ii) is_active (True/False)
+
+3) User class will have fields as follows:-
+   i) first_name
+   ii) last_name
+   iii) email (as username)
+   iv) password
+   v) is_active
+   vi) role 
+
+4) Product class will have following fileds:-
+   i) product_name
+   iii) price
+
+5) Order class will have following fields:-
+   i) order_id
+   ii) customer (user with role customer)
+   iii) vendor (user with role vendor)
+   iv) order_status (Order Placed, Order Accepted, Order Canceled)
+
+6) OrderItem class will have following fields:-
+   i) product
+   ii) quantity
+   iii) price
+   iv) order
+
+Note :- Try to give complete solution you can take help of internet, keep in mind we are looking towards your approch by giving this chanlange.  
+ 
+

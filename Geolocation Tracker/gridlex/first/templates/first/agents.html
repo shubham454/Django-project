@@ -1,0 +1,7 @@
+{% extends 'first/base.html' %}
+{% block body %}
+<h3>nearest agents in ascending order of distance</h3>
+{% for agent in nearest_agent.items %}
+{{ agent }}<br>
+{% endfor %}
+{% endblock %}

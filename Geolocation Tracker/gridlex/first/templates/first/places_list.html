@@ -1,0 +1,7 @@
+{% extends 'first/base.html' %}
+{% block body %}
+<h3>Click on city to look for nearest agents</h3>
+{% for place in places %}
+<a href="/{{place.place_name}}/">{{place.place_name}}</a><br>
+{% endfor %}
+{% endblock%}

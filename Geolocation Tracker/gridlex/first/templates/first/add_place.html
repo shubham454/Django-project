@@ -1,0 +1,9 @@
+{% extends 'first/base.html' %}
+{% block body %}
+<h1>Add places for search agent</h1>
+<form method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">add place</button>
+</form>
+{% endblock %}
