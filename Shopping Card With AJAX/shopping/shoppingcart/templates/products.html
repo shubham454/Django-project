@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<div class="container">
+    <table style="width:120%">
+        <tr>
+            <th>Product id</th>
+            <th>Product name</th>
+            <th>Product quantity</th>
+            <th>Product unit price</th>
+        </tr>
+        {% for product in products %}
+        <tr>
+            <td>{{ product.id }}</td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.quantity }}</td>
+            <td>{{ product.unit_price }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <div class="row">
+      <div class="col-md-16">
+        <h3>Add Product to cart</h3>
+            <form id="id-add-cart" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary form-control" id="submit">Submit</button>
+            </form>
+
+          <hr style="border-top:1px solid #000; clear:both;"/>
+            <table class="table table-bordered">
+                <thead class="alert-warning">
+                    <tr>
+                        <th>product name</th>
+                        <th>quantity</th>
+                        <th>total price</th>
+                        <th>button</th>
+                    </tr>
+                </thead>
+                <tbody id="table_data">
+                    {% for item in cart %}
+                    <tr id="item-{{item.product.id}}">
+                        <td>{{ item.product.name }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>{{ item.total_price }}</td>
+                        <td><button class="btn btn-danger form-control" onClick="deleteItem({{item.product.id}})">DELETE</button></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+      </div>
+    </div>
+</div>
+{% endblock %}
